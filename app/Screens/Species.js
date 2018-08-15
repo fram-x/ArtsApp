@@ -121,7 +121,7 @@ class Species extends Component {
     this.refs.toast.show(this.props.strings.newObsAddeed);
   }
 
-/**
+  /**
  * Tests coordinate and sets it for use in new observations.
  * @return {void} setState
  */
@@ -134,7 +134,7 @@ class Species extends Component {
     }
   }
 
-/**
+  /**
  * Renders the header after the available information about the species.
  * @return {View} Header View
  */
@@ -166,12 +166,12 @@ class Species extends Component {
     return (
       <Body style={{flex: 3}}>
         <Title>{this.props.selectedSpecies.localName}</Title>
-      <Subtitle style = {this.props.deviceTypeAndroidTablet ? {fontSize: 29, marginLeft: 10, marginBottom: 5, marginTop: -10} : {}}>{this.props.selectedSpecies.latinName}</Subtitle>
+        <Subtitle style = {this.props.deviceTypeAndroidTablet ? {fontSize: 29, marginLeft: 10, marginBottom: 5, marginTop: -10} : {}}>{this.props.selectedSpecies.latinName}</Subtitle>
       </Body>
     );
   }
 
-/**
+  /**
  * render nearby observation if available.
  * @return {View} Nearby text view
  */
@@ -193,7 +193,7 @@ class Species extends Component {
   render() {
     return (
       <StyleProvider style={this.props.deviceTypeAndroidTablet ? getTheme(androidTablet) : getTheme(common)}>
-      <Container>
+        <Container>
           <Header hasTabs>
             <Left>
               <Button transparent onPress={this.onClickBack}>
@@ -205,112 +205,112 @@ class Species extends Component {
           </Header>
           <Content scrollEnabled ={false}>
             <Grid>
-                <Row style={{flex: 1, alignItems: 'center', justifyContent: 'space-between', }}>
-                  <Col style={{flex: 1}}>
-                    <Button
-                      transparent
-                      success
-                      block
-                      style= {{flexDirection: 'column', height: 100}}
-                      title={this.props.strings.image}
-                      onPress={this.onClickSPImage}
-                      disabled = {this.state.selectedSpeciesImages.length === 0 ? true : false} >
-                      <Icon name='md-photos' style={this.state.selectedSpeciesImages.length === 0 ? {color: 'grey'} : {}}/>
-                      <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.image}</Text>
-                    </Button>
-                    </Col>
+              <Row style={{flex: 1, alignItems: 'center', justifyContent: 'space-between', }}>
+                <Col style={{flex: 1}}>
+                  <Button
+                    transparent
+                    success
+                    block
+                    style= {{flexDirection: 'column', height: 100}}
+                    title={this.props.strings.image}
+                    onPress={this.onClickSPImage}
+                    disabled = {this.state.selectedSpeciesImages.length === 0 ? true : false} >
+                    <Icon name='md-photos' style={this.state.selectedSpeciesImages.length === 0 ? {color: 'grey'} : {}}/>
+                    <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.image}</Text>
+                  </Button>
+                </Col>
                 <Col style={{flex: 2}}>
                   <TouchableHighlight  underlayColor = {'rgba(223, 223, 223, 0.14)'} onPress={this.onClickSPImage}>
                     <Image style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.image : styles.image} source={this.props.platform === 'ios' ? { uri: this.state.selectedSpeciesImages[0]} : { uri: 'file://' + this.state.selectedSpeciesImages[0]}}/>
                   </TouchableHighlight>
-                  </Col>
+                </Col>
                 <Col style={{flex: 1}}>
-                      <Button
-                        title = {this.props.strings.save}
-                        transparent
-                        success
-                        block
-                        style= {{flexDirection: 'column', height: 100}}
-                        onPress={this.getCoordinate} >
-                        <Icon name="ios-folder-open" />
-                        <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.save}</Text>
-                      </Button>
-                    </Col>
-                </Row>
-                {this.renderNerby()}
+                  <Button
+                    title = {this.props.strings.save}
+                    transparent
+                    success
+                    block
+                    style= {{flexDirection: 'column', height: 100}}
+                    onPress={this.getCoordinate} >
+                    <Icon name="ios-folder-open" />
+                    <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.save}</Text>
+                  </Button>
+                </Col>
+              </Row>
+              {this.renderNerby()}
             </Grid>
             <Tabs style={{flex: 1}}>
               <Tab heading={this.props.strings.spInfo}>
                 <View style={{ height: (this.props.deviceTypeAndroidTablet ? 670 : 335), margin: (this.props.deviceTypeAndroidTablet ? 20 : 5)}}>
                   <TabInfo  tablet = {this.props.deviceTypeAndroidTablet} style = {styles.container} info = {this.props.selectedSpecies.speciesText}/>
                 </View>
-            </Tab>
+              </Tab>
               <Tab heading={this.props.strings.distribution}>
                 <View style={{ height: (this.props.deviceTypeAndroidTablet ? 670 : 335), margin: (this.props.deviceTypeAndroidTablet ? 20 : 5)}}>
                   <TabDistribution distributionLocal = {this.props.selectedSpecies.distributionLocal} distributionCountry = {this.props.selectedSpecies.distributionCountry}/>
                 </View>
               </Tab>
             </Tabs>
-         </Content>
-         <Modal
-           offset={0}
-           animationDuration={200}
-           animationTension={40}
-           closeOnTouchOutside={false}
-           open={this.state.open}
-           modalDidClose={() => this.setState({open: false})}
-         >
-         <View>
-           <Text style={{fontSize: (this.props.deviceTypeAndroidTablet ? 40 : 20), marginBottom: 10, textAlign: 'center'}}>{this.props.strings.newObs}</Text>
-           <View key = 'divider' style={{height: 2, backgroundColor: '#dadada'}}/>
-           <View style={{flexDirection: 'row'}}>
-             <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.species + ':   '}</Text>
-             <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.selectedSpecies.latinName + ' / ' + this.props.selectedSpecies.localName }</Text>
-           </View>
-           <View style={{flexDirection: 'row'}}>
-             <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.date + ':   '}</Text>
-           <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.state.obsDateTime}</Text>
-           </View>
-           <View style={{flexDirection: 'row'}}>
-             <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.coordinate + ':   '}</Text>
-             <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.state.latitude + ', ' + this.state.longitude }</Text>
-           </View>
-           <View style={{flexDirection: 'column'}}>
-             <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.location + ':   '}</Text>
-             <TextInput
-               placeholder= {this.props.strings.place}
-               style={{ height: (this.props.deviceTypeAndroidTablet ? 60 : 35), fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15), borderColor: 'gray', borderWidth: 1, margin: 5, marginBottom: 1}}
-               onChangeText={(place) => this.setState({place})}
-               value={this.state.place}
-             />
-           <View style = {{height: 10 }}/>
-             <TextInput
-               placeholder= {this.props.strings.county}
-               style={{height: (this.props.deviceTypeAndroidTablet ? 60 : 35), fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15), borderColor: 'gray', borderWidth: 1, margin: 5, marginTop: 1}}
-               onChangeText={(county) => this.setState({county})}
-               value={this.state.county}
-             />
-           </View>
-           <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10}}>
-             <Button  iconLeft style = {{padding: 10}} transparent bordered onPress={() => this.setState({open: false})}>
-               <Icon name="ios-close-circle" />
-             <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3 }>{this.props.strings.cancel}</Text>
-             </Button>
-             <Button
-               disabled = {this.state.county === '' || this.state.place === '' || this.state.latitude === '' ? true : false}
-               transparent
-               iconLeft
-               bordered
-               onPress={this.onClickNewObs}>
-               <Icon name="ios-folder-open" />
-             <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3 }>{this.props.strings.save}</Text>
-             </Button>
-           </View>
-          </View>
-        </Modal>
-        <Toast ref="toast"/>
-     </Container>
-   </StyleProvider>
+          </Content>
+          <Modal
+            offset={0}
+            animationDuration={200}
+            animationTension={40}
+            closeOnTouchOutside={false}
+            open={this.state.open}
+            modalDidClose={() => this.setState({open: false})}
+          >
+            <View>
+              <Text style={{fontSize: (this.props.deviceTypeAndroidTablet ? 40 : 20), marginBottom: 10, textAlign: 'center'}}>{this.props.strings.newObs}</Text>
+              <View key = 'divider' style={{height: 2, backgroundColor: '#dadada'}}/>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.species + ':   '}</Text>
+                <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.selectedSpecies.latinName + ' / ' + this.props.selectedSpecies.localName }</Text>
+              </View>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.date + ':   '}</Text>
+                <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.state.obsDateTime}</Text>
+              </View>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.coordinate + ':   '}</Text>
+                <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.state.latitude + ', ' + this.state.longitude }</Text>
+              </View>
+              <View style={{flexDirection: 'column'}}>
+                <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.location + ':   '}</Text>
+                <TextInput
+                  placeholder= {this.props.strings.place}
+                  style={{ height: (this.props.deviceTypeAndroidTablet ? 60 : 35), fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15), borderColor: 'gray', borderWidth: 1, margin: 5, marginBottom: 1}}
+                  onChangeText={(place) => this.setState({place})}
+                  value={this.state.place}
+                />
+                <View style = {{height: 10 }}/>
+                <TextInput
+                  placeholder= {this.props.strings.county}
+                  style={{height: (this.props.deviceTypeAndroidTablet ? 60 : 35), fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15), borderColor: 'gray', borderWidth: 1, margin: 5, marginTop: 1}}
+                  onChangeText={(county) => this.setState({county})}
+                  value={this.state.county}
+                />
+              </View>
+              <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10}}>
+                <Button  iconLeft style = {{padding: 10}} transparent bordered onPress={() => this.setState({open: false})}>
+                  <Icon name="ios-close-circle" />
+                  <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3 }>{this.props.strings.cancel}</Text>
+                </Button>
+                <Button
+                  disabled = {this.state.county === '' || this.state.place === '' || this.state.latitude === '' ? true : false}
+                  transparent
+                  iconLeft
+                  bordered
+                  onPress={this.onClickNewObs}>
+                  <Icon name="ios-folder-open" />
+                  <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3 }>{this.props.strings.save}</Text>
+                </Button>
+              </View>
+            </View>
+          </Modal>
+          <Toast ref="toast"/>
+        </Container>
+      </StyleProvider>
     );
   }
 }

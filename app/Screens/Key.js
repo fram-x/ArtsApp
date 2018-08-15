@@ -268,20 +268,20 @@ class Key extends Component {
     case 'relevant':
       return (
         <View >
-      </View>);
+        </View>);
       break;
     case 'irelevant':
       return (
         <View style = {{padding: (this.props.deviceTypeAndroidTablet ? 10 : 5 ), marginTop: -1, backgroundColor: '#c9c9c9'}}>
-        <Text style = {{ fontSize: (this.props.deviceTypeAndroidTablet ? 26 : 13 )}}>{this.props.strings.irelevant}</Text>
-      </View>);
+          <Text style = {{ fontSize: (this.props.deviceTypeAndroidTablet ? 26 : 13 )}}>{this.props.strings.irelevant}</Text>
+        </View>);
       break;
     default:
       return (
         <View>
-        <Title style = {{padding: (this.props.deviceTypeAndroidTablet ? 20 : 10) }}>{section.key}</Title>
-        <ListItem itemDivider style = {{ marginTop: -1 }}><Text style = {{fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15 )}}>{section.key}</Text></ListItem>
-      </View>);
+          <Title style = {{padding: (this.props.deviceTypeAndroidTablet ? 20 : 10) }}>{section.key}</Title>
+          <ListItem itemDivider style = {{ marginTop: -1 }}><Text style = {{fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15 )}}>{section.key}</Text></ListItem>
+        </View>);
     }
   }
 
@@ -322,17 +322,17 @@ class Key extends Component {
     }
 
     return (
-        <ListItem key= {item.trait_id} style = {noView ? { opacity: 0.5,} : {}}>
-          <TraitWrapper
-            key= {item.trait_id}
-            trait= {item}
-            onChildClick = {this.onValueChange}
-            traitTitle = {item.traitText}
-            traitID = {item.trait_id}
-            elimlist = {item.eliminate}
-            noView = {noView}
-            children={ item.values }/>
-        </ListItem>
+      <ListItem key= {item.trait_id} style = {noView ? { opacity: 0.5,} : {}}>
+        <TraitWrapper
+          key= {item.trait_id}
+          trait= {item}
+          onChildClick = {this.onValueChange}
+          traitTitle = {item.traitText}
+          traitID = {item.trait_id}
+          elimlist = {item.eliminate}
+          noView = {noView}
+          children={ item.values }/>
+      </ListItem>
     );
   }
 
@@ -342,49 +342,49 @@ class Key extends Component {
         <Container>
           <Header>
             <Left>
-            <Button transparent onPress={this.onClickMenu}>
+              <Button transparent onPress={this.onClickMenu}>
                 <Icon name='ios-menu' />
-            </Button>
+              </Button>
             </Left>
             <Body style={{flex: 3}}>
               <Title>{this.props.chosenKeyTitle}</Title>
             </Body>
             <Right style={{marginRight: 5}}>
               <Button transparent onPress={this.resetKey}>
-                  <Icon name='md-refresh' style={this.props.deviceTypeAndroidTablet ? {fontSize: 40} : {fontSize: 20}} />
+                <Icon name='md-refresh' style={this.props.deviceTypeAndroidTablet ? {fontSize: 40} : {fontSize: 20}} />
                 <Text style={this.props.deviceTypeAndroidTablet && {fontSize: 30}}>{this.props.strings.reset}</Text>
-                </Button>
+              </Button>
             </Right>
           </Header>
           <Content >
             <Subtitle style= {{alignSelf: 'center', padding: 5, fontSize: (this.props.deviceTypeAndroidTablet ? 20 : 10)}}>{this.props.strings.longclick}</Subtitle>
             <SectionList
-                renderItem={this.renderData}
-                initialNumToRender = {11}
-                keyExtractor={(item, index) => item.trait_id}
-                renderSectionHeader={ this.renderSectionHeader}
-                sections={this.getSections()}
-                extraData = {this.props.resetting}
-              />
+              renderItem={this.renderData}
+              initialNumToRender = {11}
+              keyExtractor={(item, index) => item.trait_id}
+              renderSectionHeader={ this.renderSectionHeader}
+              sections={this.getSections()}
+              extraData = {this.props.resetting}
+            />
           </Content>
           <Footer>
-          <FooterTab>
+            <FooterTab>
               <Button transparent onPress={this.onClickHome}>
-                  <Icon name='md-home'/>
+                <Icon name='md-home'/>
               </Button>
               {this.props.nerbyList.length !== 0 &&
                 <Button transparent onPress={this.onClickSpLeft}>
-                    <Text style={this.props.deviceTypeAndroidTablet && {fontSize: 30}}>{this.state.nerbyLeft}</Text>
-                    <Icon name='md-globe'/>
+                  <Text style={this.props.deviceTypeAndroidTablet && {fontSize: 30}}>{this.state.nerbyLeft}</Text>
+                  <Icon name='md-globe'/>
                 </Button>
               }
               <Button  transparent onPress={this.onClickSpLeft}>
                 <Text style={this.props.deviceTypeAndroidTablet && {fontSize: 30}}>{this.props.chosenValues.length === 0 ? this.props.fullSpList.length : this.props.speciesLeft.length }</Text>
                 <Icon name='ios-bug'/>
               </Button>
-          </FooterTab>
-        </Footer>
-      </Container>
+            </FooterTab>
+          </Footer>
+        </Container>
       </StyleProvider>
     );
   };

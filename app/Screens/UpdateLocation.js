@@ -245,16 +245,16 @@ class UpdateLocation extends Component {
             style = {{margin: (this.props.deviceTypeAndroidTablet ? 10 : 0 ),  height: (this.props.deviceTypeAndroidTablet ? 60 : null)}}
             onPress={this.refreshList.bind(this, this.props.keys[i].key_id)}>
             <Col >
-            <Row style = {{flex: 1, justifyContent: 'space-between', alignItems: 'center'}}>
-              <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.textkey : styles.textkey}>{this.props.keys[i].title}</Text>
-              <Icon
-                style = {{marginRight: 10, paddingTop: 5, alignSelf: 'center'}}
-                name={this.state.chosenKeys.some((a) => {
-                  return a === this.props.keys[i].key_id;
-                }) ? 'ios-radio-button-on' :  'ios-radio-button-off'}/>
-          </Row>
-          <View style = {styles.seperator}/>
-        </Col>
+              <Row style = {{flex: 1, justifyContent: 'space-between', alignItems: 'center'}}>
+                <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.textkey : styles.textkey}>{this.props.keys[i].title}</Text>
+                <Icon
+                  style = {{marginRight: 10, paddingTop: 5, alignSelf: 'center'}}
+                  name={this.state.chosenKeys.some((a) => {
+                    return a === this.props.keys[i].key_id;
+                  }) ? 'ios-radio-button-on' :  'ios-radio-button-off'}/>
+              </Row>
+              <View style = {styles.seperator}/>
+            </Col>
           </ListItem>
         );
       }
@@ -283,16 +283,16 @@ class UpdateLocation extends Component {
               <View key = 'divider' style={{height: 2, backgroundColor: '#dadada'}}/>
             </View>
             <Content>
-                {this.renderList()}
+              {this.renderList()}
             </Content>
           </View>
           <Footer>
             <FooterTab >
-            <Button block transparent disabled ={this.props.modalOpen || this.state.disableAll ? true : false} onPress={this.onClickUpdate}>
-              <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.textbutton : styles.textbutton}>{this.props.strings.updateLocation}</Text>
-              <Icon name='md-download'/>
-            </Button>
-          </FooterTab>
+              <Button block transparent disabled ={this.props.modalOpen || this.state.disableAll ? true : false} onPress={this.onClickUpdate}>
+                <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.textbutton : styles.textbutton}>{this.props.strings.updateLocation}</Text>
+                <Icon name='md-download'/>
+              </Button>
+            </FooterTab>
           </Footer>
           <Toast ref="uptoast"/>
           <Modal
@@ -304,50 +304,50 @@ class UpdateLocation extends Component {
             modalDidOpen={() => {}}
             modalDidClose={() => {}}
           >
-          <View>
-            <Text style={{fontSize: (this.props.deviceTypeAndroidTablet ? 40 : 20), marginBottom: 10, textAlign: 'center'}}>{this.props.strings.updateLocation}</Text>
-            <View key = 'divider' style={{height: 2, backgroundColor: '#dadada'}}/>
-            <View style={{flexDirection: 'column'}}>
-            <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.selectedKeys + ' '}</Text>
-            <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.keyText : styles.keyText}>{this.makeKeyString()}</Text>
-            <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.withCoor + ' '}</Text>
-              <TextInput
-                disabled ={this.props.keysUpdated_loading || this.state.disableAll}
-                placeholder= {this.props.strings.latitude}
-                style={{height: (this.props.deviceTypeAndroidTablet ? 70 : 40), borderColor: 'gray', borderWidth: 1, margin: 5, marginBottom: 1, fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15)}}
-                onChangeText={(latitude) => this.setState({latitude})}
-                value={this.state.latitude}
-                autoCorrect = {false}
-                keyboardType = 'numeric'
-              />
-              <TextInput
-                disabled ={this.props.keysUpdated_loading || this.state.disableAll}
-                placeholder= {this.props.strings.longitude}
-                style={{height: (this.props.deviceTypeAndroidTablet ? 70 : 40), borderColor: 'gray', borderWidth: 1, margin: 5, marginTop: 1, fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15)}}
-                onChangeText={(longitude) => this.setState({longitude})}
-                value={this.state.longitude}
-                autoCorrect = {false}
-                keyboardType = 'numeric'
-              />
-            <Button primary rounded bordered disabled ={this.props.nerby_updated_loading ? true : false} onPress={this.getCoordinate} style={{ alignSelf: 'center', marginBottom: 10}}>
-                <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}>{this.props.strings.curCoor}</Text>
-              </Button>
+            <View>
+              <Text style={{fontSize: (this.props.deviceTypeAndroidTablet ? 40 : 20), marginBottom: 10, textAlign: 'center'}}>{this.props.strings.updateLocation}</Text>
+              <View key = 'divider' style={{height: 2, backgroundColor: '#dadada'}}/>
+              <View style={{flexDirection: 'column'}}>
+                <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.selectedKeys + ' '}</Text>
+                <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.keyText : styles.keyText}>{this.makeKeyString()}</Text>
+                <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.withCoor + ' '}</Text>
+                <TextInput
+                  disabled ={this.props.keysUpdated_loading || this.state.disableAll}
+                  placeholder= {this.props.strings.latitude}
+                  style={{height: (this.props.deviceTypeAndroidTablet ? 70 : 40), borderColor: 'gray', borderWidth: 1, margin: 5, marginBottom: 1, fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15)}}
+                  onChangeText={(latitude) => this.setState({latitude})}
+                  value={this.state.latitude}
+                  autoCorrect = {false}
+                  keyboardType = 'numeric'
+                />
+                <TextInput
+                  disabled ={this.props.keysUpdated_loading || this.state.disableAll}
+                  placeholder= {this.props.strings.longitude}
+                  style={{height: (this.props.deviceTypeAndroidTablet ? 70 : 40), borderColor: 'gray', borderWidth: 1, margin: 5, marginTop: 1, fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15)}}
+                  onChangeText={(longitude) => this.setState({longitude})}
+                  value={this.state.longitude}
+                  autoCorrect = {false}
+                  keyboardType = 'numeric'
+                />
+                <Button primary rounded bordered disabled ={this.props.nerby_updated_loading ? true : false} onPress={this.getCoordinate} style={{ alignSelf: 'center', marginBottom: 10}}>
+                  <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}>{this.props.strings.curCoor}</Text>
+                </Button>
+              </View>
+              <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <Button rounded bordered disabled ={this.props.nerby_updated_loading ? true : false} onPress={() => this.props.actions.changeModal()}>
+                  <Icon name="md-close" />
+                  <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}>{this.props.strings.cancel}</Text>
+                </Button>
+                {this.props.nerby_updated_loading ? <Spinner color='green' /> : null}
+                <Button rounded bordered disabled ={this.state.chosenKeys.length === 0 ||  this.state.latitude === '' || this.props.nerby_updated_loading ? true : false} onPress={this.updateObsetvations}>
+                  <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}>{this.props.strings.update}</Text>
+                </Button>
+              </View>
             </View>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Button rounded bordered disabled ={this.props.nerby_updated_loading ? true : false} onPress={() => this.props.actions.changeModal()}>
-                <Icon name="md-close" />
-              <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}>{this.props.strings.cancel}</Text>
-              </Button>
-              {this.props.nerby_updated_loading ? <Spinner color='green' /> : null}
-              <Button rounded bordered disabled ={this.state.chosenKeys.length === 0 ||  this.state.latitude === '' || this.props.nerby_updated_loading ? true : false} onPress={this.updateObsetvations}>
-                <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}>{this.props.strings.update}</Text>
-              </Button>
-            </View>
-           </View>
-           <Toast ref="toast"/>
-         </Modal>
+            <Toast ref="toast"/>
+          </Modal>
         </Container>
-    </StyleProvider>
+      </StyleProvider>
     );
   }
 }

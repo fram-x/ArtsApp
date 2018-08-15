@@ -11,23 +11,23 @@ const platformStyle = undefined;
 export default {
   platformStyle,
   platform,
-    // AndroidRipple
+  // AndroidRipple
   androidRipple: true,
   androidRippleColor: 'rgba(256, 256, 256, 0.3)',
   androidRippleColorDark: 'rgba(0, 0, 0, 0.15)',
 
-    // Badge
+  // Badge
   badgeBg: '#ED1727',
   badgeColor: '#fff',
-    // New Variable
+  // New Variable
   badgePadding: (platform === 'ios') ? 3 : 0,
 
-    // Button
+  // Button
   btnFontFamily: (platform === 'ios') ? 'System' : 'Roboto_medium',
   btnDisabledBg: '#fff',
   btnDisabledClr: '#fafafa',
 
-    // CheckBox
+  // CheckBox
   CheckboxRadius: (platform === 'ios') ? 13 : 0,
   CheckboxBorderWidth: (platform === 'ios') ? 1 : 2,
   CheckboxPaddingLeft: (platform === 'ios') ? 4 : 2,
@@ -40,7 +40,7 @@ export default {
   checkboxSize: 20,
   checkboxTickColor: '#fff',
 
-    // New Variable
+  // New Variable
   get defaultTextColor() {
     return this.textColor;
   },
@@ -78,7 +78,7 @@ export default {
   },
   get btnTextSize() {
     return (platform === 'ios') ? this.fontSizeBase * 1.1 :
-        this.fontSizeBase - 1;
+      this.fontSizeBase - 1;
   },
   get btnTextSizeLarge() {
     return this.fontSizeBase * 1.5;
@@ -100,11 +100,11 @@ export default {
   },
 
 
-    // Card
+  // Card
   cardDefaultBg: '#fff',
 
 
-      // Color
+  // Color
   brandPrimary: '#3079B6',
   brandInfo: '#6D9CC2',
   brandSuccess: '#5FBB5A',
@@ -113,7 +113,7 @@ export default {
   brandSidebar: '#252932',
 
 
-    // Font
+  // Font
   fontFamily: (platform === 'ios') ? 'System' : 'Roboto',
   fontSizeBase: 30,
 
@@ -128,12 +128,12 @@ export default {
   },
 
 
-    // Footer
+  // Footer
   footerHeight: 110,
   footerDefaultBg: '#f3f3f3',
 
 
-    // FooterTab
+  // FooterTab
   tabBarTextColor: '#3079B6',
   tabBarTextSize: (platform === 'ios') ? 14 : 22,
   activeTab: '#3079B6',
@@ -141,7 +141,7 @@ export default {
   tabBarActiveTextColor: '#90CCFF',
   tabActiveBgColor: (platform === 'ios') ? '#3079B6' : undefined,
 
-    // Tab
+  // Tab
   tabDefaultBg: '#F8F8F8',
   topTabBarTextColor: '#6b6b6b',
   topTabBarActiveTextColor: '#3079B6',
@@ -149,7 +149,7 @@ export default {
   topTabBarBorderColor: '#F8F8F8',
 
 
-    // Header
+  // Header
   toolbarBtnColor: '#3079B6',
   toolbarDefaultBg: '#F8F8F8',
   toolbarHeight: (platform === 'ios') ? 64 : 80,
@@ -161,18 +161,18 @@ export default {
   toolbarTextColor: '#000',
   toolbarDefaultBorder: '#3079B6',
   get statusBarColor() {
-    return color(this.toolbarDefaultBg).darken(0.2).hexString();
+    return color(this.toolbarDefaultBg).darken(0.2).hex();
   },
 
 
-    // Icon
+  // Icon
   iconFamily: 'Ionicons',
   iconFontSize: (platform === 'ios') ? 24 : 56,
   iconMargin: 7,
   iconHeaderSize: (platform === 'ios') ? 33 : 56,
 
 
-    // InputGroup
+  // InputGroup
   inputFontSize: 17,
   inputBorderColor: '#D9D5DC',
   inputSuccessBorderColor: '#5FBB5A',
@@ -194,7 +194,7 @@ export default {
   },
 
 
-    // Line Height
+  // Line Height
   btnLineHeight: 38,
   lineHeightH1: 64,
   lineHeightH2: 56,
@@ -203,75 +203,75 @@ export default {
   lineHeight: (platform === 'ios') ? 20 : 48,
 
 
-    // List
+  // List
   listBorderColor: '#c9c9c9',
   listDividerBg: '#c9c9c9',
   listItemHeight: 90,
   listBtnUnderlayColor: 'rgba(0, 0, 0, 0.05)',
 
-    // Card
+  // Card
   cardBorderColor: '#ccc',
 
-    // Changed Variable
+  // Changed Variable
   listItemPadding: (platform === 'ios') ? 10 : 24,
 
   listNoteColor: '#808080',
   listNoteSize: 26,
 
 
-    // Progress Bar
+  // Progress Bar
   defaultProgressColor: '#E4202D',
   inverseProgressColor: '#1A191B',
 
 
-    // Radio Button
+  // Radio Button
   radioBtnSize: (platform === 'ios') ? 25 : 46,
   radioSelectedColorAndroid: '#3079B6',
 
-    // New Variable
+  // New Variable
   radioBtnLineHeight: (platform === 'ios') ? 29 : 48,
 
   radioColor: '#7e7e7e',
 
   get radioSelectedColor() {
-    return color(this.radioColor).darken(0.2).hexString();
+    return color(this.radioColor).darken(0.2).hex();
   },
 
 
-    // Spinner
+  // Spinner
   defaultSpinnerColor: '#5FBB5A',
   inverseSpinnerColor: '#1E3B1D',
 
 
-    // Tabs
+  // Tabs
   tabBgColor: '#F8F8F8',
   tabFontSize: 30,
   tabTextColor: '#222222',
 
 
-    // Text
+  // Text
   textColor: '#000',
   inverseTextColor: '#fff',
   noteFontSize: 28,
 
 
-    // Title
+  // Title
   titleFontfamily: (platform === 'ios') ? 'System' : 'Roboto_medium',
   titleFontSize: (platform === 'ios') ? 17 : 40,
   subTitleFontSize: (platform === 'ios') ? 12 : 30,
   subtitleColor: '#3079B6',
 
-    // New Variable
+  // New Variable
   titleFontColor: '#3079B6',
 
 
-    // Other
+  // Other
   borderRadiusBase: (platform === 'ios') ? 5 : 2,
   borderWidth: (1 / PixelRatio.getPixelSizeForLayoutSize(1)),
   contentPadding: 10,
 
   get darkenHeader() {
-    return color(this.tabBgColor).darken(0.03).hexString();
+    return color(this.tabBgColor).darken(0.03).hex();
   },
 
   dropdownBg: '#000',
@@ -282,6 +282,6 @@ export default {
   deviceWidth,
   deviceHeight,
 
-    // New Variable
+  // New Variable
   inputGroupRoundedBorderRadius: 30,
 };

@@ -91,25 +91,25 @@ class GroupChild extends Component {
 
   render() {
     return (
-        <TouchableHighlight
-          delayLongPress={500}
-          onPress ={this.onClick}
-          style={ this.props.isSelected ? (this.state.isActive || this.props.chosenValues.length === 0 || this.props.selected ? styles.selected : styles.inActiv) : (this.state.isActive || this.props.chosenValues.length === 0 || this.props.selected ? styles.unSelected : styles.inActiv)}
-          underlayColor = {this.state.isActive ? '#dedede' : 'rgba(255, 255, 255, 0)'}
-          onLongPress ={this.longclick}
-        >
-          <Row
-            style={{ height: (this.props.deviceTypeAndroidTablet ? 110 : 60),alignItems: 'center',}}>
-            <Image source={Platform.OS === 'ios' ? { uri: this.state.images[0]} : { uri: 'file://' + this.state.images[0]}}
+      <TouchableHighlight
+        delayLongPress={500}
+        onPress ={this.onClick}
+        style={ this.props.isSelected ? (this.state.isActive || this.props.chosenValues.length === 0 || this.props.selected ? styles.selected : styles.inActiv) : (this.state.isActive || this.props.chosenValues.length === 0 || this.props.selected ? styles.unSelected : styles.inActiv)}
+        underlayColor = {this.state.isActive ? '#dedede' : 'rgba(255, 255, 255, 0)'}
+        onLongPress ={this.longclick}
+      >
+        <Row
+          style={{ height: (this.props.deviceTypeAndroidTablet ? 110 : 60),alignItems: 'center',}}>
+          <Image source={Platform.OS === 'ios' ? { uri: this.state.images[0]} : { uri: 'file://' + this.state.images[0]}}
             style={this.props.deviceTypeAndroidTablet ? {resizeMode: 'contain', height: 100, width: 100, marginRight: 5,  margin: 5, opacity: this.props.disabled ? 0.3 : 1 } : {resizeMode: 'contain', height: 50, width: 50, marginRight: 5, margin: 5, opacity: this.props.disabled ? 0.3 : 1 }} />
-            <Text
-              numberOfLines = {3}
-              ellipsizeMode = "tail"
-              style = {this.props.disabled ? {color: '#a4a4a4', marginRight: 10, fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15), width: Dimensions.get('window').width - (this.props.deviceTypeAndroidTablet ? 180 : 130)}
-               : {fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15), marginRight: 10, width: Dimensions.get('window').width - (this.props.deviceTypeAndroidTablet ? 180 : 130)}}>{this.props.text}
-             </Text>
-             {this.state.isActive || this.props.chosenValues.length !== 0 && !this.props.selected && <Icon style={{backgroundColor: 'rgba(255, 255, 255, 0)', fontSize: 20, color: 'red', margin: -10 }} name='md-close-circle'/>}
-          </Row>
+          <Text
+            numberOfLines = {3}
+            ellipsizeMode = "tail"
+            style = {this.props.disabled ? {color: '#a4a4a4', marginRight: 10, fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15), width: Dimensions.get('window').width - (this.props.deviceTypeAndroidTablet ? 180 : 130)}
+              : {fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15), marginRight: 10, width: Dimensions.get('window').width - (this.props.deviceTypeAndroidTablet ? 180 : 130)}}>{this.props.text}
+          </Text>
+          {this.state.isActive || this.props.chosenValues.length !== 0 && !this.props.selected && <Icon style={{backgroundColor: 'rgba(255, 255, 255, 0)', fontSize: 20, color: 'red', margin: -10 }} name='md-close-circle'/>}
+        </Row>
       </TouchableHighlight>
     );
   }

@@ -60,24 +60,24 @@ class TabDistribution extends Component {
 
   render() {
     return(
-        <Card >
-          {this.props.isConnected ? <ScrollView>
-            {!this.state.noDistrubution ?
-              <View>
-                <Image
-                  source={{uri: this.props.distributionCountry + '&lon=' + this.props.longitude + '&lat=' + this.props.latitude}}
-                  style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.image : styles.image}/>
-                  <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text : styles.text}>{this.props.strings.nationalDistrubution + this.state.latitude}</Text>
-                <Image
-                  source={{uri: this.props.distributionLocal + '&lon=' + this.props.longitude + '&lat=' + this.props.latitude}}
-                  style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.image : styles.image}/>
-                  <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text : styles.text}>{this.props.strings.regonalDistrubution}</Text>
-                <View style = {{height: (this.props.deviceTypeAndroidTablet ? 100 : 50)}}/>
-              </View> :
-              <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text : styles.text}>{this.props.strings.noDistrubution}</Text>
-            }
+      <Card >
+        {this.props.isConnected ? <ScrollView>
+          {!this.state.noDistrubution ?
+            <View>
+              <Image
+                source={{uri: this.props.distributionCountry + '&lon=' + this.props.longitude + '&lat=' + this.props.latitude}}
+                style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.image : styles.image}/>
+              <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text : styles.text}>{this.props.strings.nationalDistrubution + this.state.latitude}</Text>
+              <Image
+                source={{uri: this.props.distributionLocal + '&lon=' + this.props.longitude + '&lat=' + this.props.latitude}}
+                style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.image : styles.image}/>
+              <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text : styles.text}>{this.props.strings.regonalDistrubution}</Text>
+              <View style = {{height: (this.props.deviceTypeAndroidTablet ? 100 : 50)}}/>
+            </View> :
+            <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text : styles.text}>{this.props.strings.noDistrubution}</Text>
+          }
         </ScrollView> : <Text style={{margin: 10, textAlign: 'center'}}>{this.props.strings.disNoNetwork}</Text>}
-        </Card>
+      </Card>
     );
   }
 }

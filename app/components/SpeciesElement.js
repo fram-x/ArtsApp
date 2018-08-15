@@ -72,18 +72,18 @@ class SpeciesElement extends Component {
     if (this.props.noObs) {
       return(
         <Col size = {0.45} style={{marginLeft: 15, marginRight: 0, alignSelf: 'flex-end'}}>
-        <Row >
-        <Image style={this.props.isAndroidTablet ? AndroidTabletStyles.image : styles.image} source={require('../images/large.png')}/>
-        <Text style={this.props.isAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.obsLarge}</Text>
-        </Row>
-        <Row>
-        <Image style={this.props.isAndroidTablet ? AndroidTabletStyles.image : styles.image} source={require('../images/medium.png')}/>
-        <Text style={this.props.isAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.obsMedium}</Text>
-        </Row>
-        <Row>
-        <Image style={this.props.isAndroidTablet ? AndroidTabletStyles.image : styles.image} source={require('../images/small.png')}/>
-        <Text style={this.props.isAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.obsSmall}</Text>
-        </Row>
+          <Row >
+            <Image style={this.props.isAndroidTablet ? AndroidTabletStyles.image : styles.image} source={require('../images/large.png')}/>
+            <Text style={this.props.isAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.obsLarge}</Text>
+          </Row>
+          <Row>
+            <Image style={this.props.isAndroidTablet ? AndroidTabletStyles.image : styles.image} source={require('../images/medium.png')}/>
+            <Text style={this.props.isAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.obsMedium}</Text>
+          </Row>
+          <Row>
+            <Image style={this.props.isAndroidTablet ? AndroidTabletStyles.image : styles.image} source={require('../images/small.png')}/>
+            <Text style={this.props.isAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.obsSmall}</Text>
+          </Row>
         </Col>
       );
     }
@@ -94,18 +94,18 @@ class SpeciesElement extends Component {
 
   render() {
     return(
-        <View >
-            <Grid style= {{width: Dimensions.get('window').width}}>
-                <Image source ={Platform.OS === 'ios' ? { uri: this.state.images[0]} : { uri: 'file://' + this.state.images[0]}}
-                style={this.props.deviceTypeAndroidTablet ? {resizeMode: 'contain', height: 120, width: 120, marginRight: 5,  margin: 5 } : {resizeMode: 'contain', height: 70, width: 70, marginRight: 5, margin: 5 }}
-                />
-                <Col size = {1} >
-                  <Text style={this.props.isAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}>{this.props.latinName}</Text>
-                <Text style={this.props.isAndroidTablet ? AndroidTabletStyles.text2 : styles.text2}>{this.props.localName}</Text>
-                </Col>
-                {this.renderNerbyObservation()}
-            </Grid>
-        </View>
+      <View >
+        <Grid style= {{width: Dimensions.get('window').width}}>
+          <Image source ={Platform.OS === 'ios' ? { uri: this.state.images[0]} : { uri: 'file://' + this.state.images[0]}}
+            style={this.props.deviceTypeAndroidTablet ? {resizeMode: 'contain', height: 120, width: 120, marginRight: 5,  margin: 5 } : {resizeMode: 'contain', height: 70, width: 70, marginRight: 5, margin: 5 }}
+          />
+          <Col size = {1} >
+            <Text style={this.props.isAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}>{this.props.latinName}</Text>
+            <Text style={this.props.isAndroidTablet ? AndroidTabletStyles.text2 : styles.text2}>{this.props.localName}</Text>
+          </Col>
+          {this.renderNerbyObservation()}
+        </Grid>
+      </View>
     );
   }
 }

@@ -146,16 +146,16 @@ class UpdateKeys extends Component {
         }
 
       })
-      .catch((err) => {
-        this.setState({lUpdate: false, disableAll: false});
-      });
+        .catch((err) => {
+          this.setState({lUpdate: false, disableAll: false});
+        });
     }
     else {
       Alert.alert(
         this.props.strings.noNetwork,
         this.props.strings.disNoNetwork,
         [
-        {text: this.props.strings.ok, onPress: () => {}, style: 'cancel'}
+          {text: this.props.strings.ok, onPress: () => {}, style: 'cancel'}
         ],
         { cancelable: true }
       );
@@ -231,7 +231,7 @@ class UpdateKeys extends Component {
       this.props.strings.deleteKeyHeader,
       this.props.strings.deleteKey + ' ',
       [
-      {text: this.props.strings.cancel, onPress: () => {}, style: 'cancel'},
+        {text: this.props.strings.cancel, onPress: () => {}, style: 'cancel'},
         {text: this.props.strings.acsept, onPress: () => {
           this.props.actions.deletedata(i);
         }},
@@ -262,12 +262,12 @@ class UpdateKeys extends Component {
           <Right >
             {item.item.updateTrigger === 1 &&
               <View>
-            <Icon  name={this.state.chosenKeys.some((a) => {
-              return a === item.item.key_id;
-            }) ? 'ios-radio-button-on' :  'ios-radio-button-off'}/>
-            <Text style= {{fontSize: (this.props.deviceTypeAndroidTablet ?  20 : 10 )}} >{this.props.strings.needUpdate}</Text>
-            </View>
-        }
+                <Icon  name={this.state.chosenKeys.some((a) => {
+                  return a === item.item.key_id;
+                }) ? 'ios-radio-button-on' :  'ios-radio-button-off'}/>
+                <Text style= {{fontSize: (this.props.deviceTypeAndroidTablet ?  20 : 10 )}} >{this.props.strings.needUpdate}</Text>
+              </View>
+            }
           </Right>
         </ListItem>
       );
@@ -279,69 +279,69 @@ class UpdateKeys extends Component {
   render() {
     return (
       <StyleProvider style={this.props.deviceTypeAndroidTablet ? getTheme(androidTablet) : getTheme(common)}>
-      <Container>
-        <View style={styles.container}>
-          <Header>
-            <Left>
-              <Button transparent disabled ={this.props.keysUpdated_loading || this.state.disableAll} onPress={this.onClickHome}>
-                <Icon name='ios-arrow-back-outline'/>
-              </Button>
-            </Left>
-            <Body style={{flex: 3}}>
-              <Title>{this.props.strings.manageKeys}</Title>
-            </Body>
-            <Right style={{flex: 2, marginRight: - 5}}>
-              <Button transparent disabled ={false} onPress={this.lookforupdate}>
-                <Text style = {{marginRight: 2, textAlign: 'center', fontSize: (this.props.deviceTypeAndroidTablet ? 20 : 10)}}>{this.props.strings.lookForUpdate}</Text>
-                <Icon name='md-refresh'/>
-              </Button>
-            </Right>
-          </Header>
-          <View>
-            {this.state.listLength > 0 || this.state.showUP ?
-              <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}> {this.props.strings.updateKeyText} </Text> :
-              <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}> {this.props.strings.noKeys} </Text>
-            }
-            <View key = 'divider' style={{height: 2, backgroundColor: '#dadada'}}/>
+        <Container>
+          <View style={styles.container}>
+            <Header>
+              <Left>
+                <Button transparent disabled ={this.props.keysUpdated_loading || this.state.disableAll} onPress={this.onClickHome}>
+                  <Icon name='ios-arrow-back-outline'/>
+                </Button>
+              </Left>
+              <Body style={{flex: 3}}>
+                <Title>{this.props.strings.manageKeys}</Title>
+              </Body>
+              <Right style={{flex: 2, marginRight: - 5}}>
+                <Button transparent disabled ={false} onPress={this.lookforupdate}>
+                  <Text style = {{marginRight: 2, textAlign: 'center', fontSize: (this.props.deviceTypeAndroidTablet ? 20 : 10)}}>{this.props.strings.lookForUpdate}</Text>
+                  <Icon name='md-refresh'/>
+                </Button>
+              </Right>
+            </Header>
+            <View>
+              {this.state.listLength > 0 || this.state.showUP ?
+                <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}> {this.props.strings.updateKeyText} </Text> :
+                <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}> {this.props.strings.noKeys} </Text>
+              }
+              <View key = 'divider' style={{height: 2, backgroundColor: '#dadada'}}/>
+            </View>
+            <Content>
+              {this.props.updateList.length === 0 && <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}> {this.props.strings.noKeysDownloaded}</Text>}
+              <FlatList
+                extraData = {this.state.chosenKeys.length}
+                data = {this.props.updateList}
+                keyExtractor = {this.keyExtractor}
+                renderItem = {this.renderItem}
+                ref = "list">
+              </FlatList>
+            </Content>
+            <Toast ref="toast"/>
           </View>
-          <Content>
-            {this.props.updateList.length === 0 && <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}> {this.props.strings.noKeysDownloaded}</Text>}
-            <FlatList
-              extraData = {this.state.chosenKeys.length}
-              data = {this.props.updateList}
-              keyExtractor = {this.keyExtractor}
-              renderItem = {this.renderItem}
-              ref = "list">
-            </FlatList>
-          </Content>
-          <Toast ref="toast"/>
-        </View>
-        {this.state.listLength > 0 || this.state.showUP ?
-          <Footer>
-            <Button block transparent disabled ={this.props.keysUpdated_loading || this.state.disableAll} onPress={this.updateKeys}>
-              <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}>{this.props.strings.updateKey}</Text>
-              <Icon name='md-download'/>
-            </Button>
-          </Footer> : null
-        }
+          {this.state.listLength > 0 || this.state.showUP ?
+            <Footer>
+              <Button block transparent disabled ={this.props.keysUpdated_loading || this.state.disableAll} onPress={this.updateKeys}>
+                <Text style = {this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text1 : styles.text1}>{this.props.strings.updateKey}</Text>
+                <Icon name='md-download'/>
+              </Button>
+            </Footer> : null
+          }
 
-        <Modal
-          offset={0}
-          animationDuration={200}
-          animationTension={40}
-          closeOnTouchOutside={false}
-          open={this.props.keysUpdated_loading || this.state.disableAll}
-          modalDidOpen={() => {}}
-          modalDidClose={() => {}}
-        >
-        <View>
-            {!this.state.lUpdate &&
+          <Modal
+            offset={0}
+            animationDuration={200}
+            animationTension={40}
+            closeOnTouchOutside={false}
+            open={this.props.keysUpdated_loading || this.state.disableAll}
+            modalDidOpen={() => {}}
+            modalDidClose={() => {}}
+          >
+            <View>
+              {!this.state.lUpdate &&
               <Text style = {styles.text1}>{this.props.strings.downloading}</Text>
-             }
-            <Spinner color='green'/>
-         </View>
-       </Modal>
-      </Container>
+              }
+              <Spinner color='green'/>
+            </View>
+          </Modal>
+        </Container>
       </StyleProvider>
     );
   }

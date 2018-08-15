@@ -54,7 +54,7 @@ class SpeciesImageViewer extends Component {
     return  nextProps.scene.name === 'SpeciesImageViewer';
   };
 
-/**
+  /**
  * sets the url for the images in the right format.
  * @return {void}
  */
@@ -82,27 +82,27 @@ class SpeciesImageViewer extends Component {
   render() {
     return (
       <StyleProvider style={this.props.deviceTypeAndroidTablet ? getTheme(androidTablet) : getTheme(common)}>
-      <Container>
-        <View style={styles.container}>
-          <Header>
-            <Left>
-              <Button transparent onPress={this.onClickBack}>
-                <Icon name='ios-arrow-back-outline'/>
-              </Button>
-            </Left>
-            <Body style={{flex: 3}}>
-              <Title>{this.props.strings.image}</Title>
-            </Body>
-            <Right/>
-          </Header>
-          <Content ref = "cont" scrollEnabled ={false}>
-            <View style={styles.container}>
-              <ImageViewer style={styles.container} imageUrls = {this.state.images} />
-            </View>
-          </Content>
-        </View>
-      </Container>
-    </StyleProvider>
+        <Container>
+          <View style={styles.container}>
+            <Header>
+              <Left>
+                <Button transparent onPress={this.onClickBack}>
+                  <Icon name='ios-arrow-back-outline'/>
+                </Button>
+              </Left>
+              <Body style={{flex: 3}}>
+                <Title>{this.props.strings.image}</Title>
+              </Body>
+              <Right/>
+            </Header>
+            <Content ref = "cont" scrollEnabled ={false}>
+              <View style={styles.container}>
+                <ImageViewer style={styles.container} imageUrls = {this.state.images} />
+              </View>
+            </Content>
+          </View>
+        </Container>
+      </StyleProvider>
     );
   }
 }

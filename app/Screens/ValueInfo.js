@@ -99,10 +99,10 @@ class ValueInfo extends Component {
           key = {i}
           onPress = {this.onClickImage.bind(this,i)}
           underlayColor = {'#dedede'}>
-            <Image
+          <Image
             style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.imageSmall : styles.imageSmall}
             source={this.props.platform === 'ios' ? {uri: item} : {uri: 'file://' + item}}
-            />
+          />
         </TouchableHighlight>
       );
     });
@@ -111,31 +111,31 @@ class ValueInfo extends Component {
   render() {
     return (
       <StyleProvider style={this.props.deviceTypeAndroidTablet ? getTheme(androidTablet) : getTheme(common)}>
-      <Container>
-        <Header>
-          <Left>
-            <Button transparent  onPress={this.onclickBack}>
-              <Icon name='ios-arrow-back-outline' />
-            </Button>
-          </Left>
-          <Body style={{flex: 3}}>
-            <Title>{this.props.strings.valueInfo}</Title>
-          </Body>
-          <Right/>
-        </Header>
-        <Content>
+        <Container>
+          <Header>
+            <Left>
+              <Button transparent  onPress={this.onclickBack}>
+                <Icon name='ios-arrow-back-outline' />
+              </Button>
+            </Left>
+            <Body style={{flex: 3}}>
+              <Title>{this.props.strings.valueInfo}</Title>
+            </Body>
+            <Right/>
+          </Header>
+          <Content>
             <View style={styles.container}>
               <View style={styles.container2}>
                 {this.props.navigationState.images.length > 0 &&
                   <View style = {{marginTop: (this.props.deviceTypeAndroidTablet ? 10 : 10)}}>
-                  <ImageZoom
-                    cropWidth={Dimensions.get('window').width - 20}
-                    cropHeight={this.props.deviceTypeAndroidTablet ? 560 : 280}
-                    imageWidth={Dimensions.get('window').width - 20}
-                    imageHeight={this.props.deviceTypeAndroidTablet ? 540 : 270}>
-                    <Image style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.image : styles.image}
-                      source={this.props.platform === 'ios' ? {uri: this.props.navigationState.images[this.state.activeImage]} : {uri: 'file://' + this.props.navigationState.images[this.state.activeImage]}}/>
-                  </ImageZoom>
+                    <ImageZoom
+                      cropWidth={Dimensions.get('window').width - 20}
+                      cropHeight={this.props.deviceTypeAndroidTablet ? 560 : 280}
+                      imageWidth={Dimensions.get('window').width - 20}
+                      imageHeight={this.props.deviceTypeAndroidTablet ? 540 : 270}>
+                      <Image style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.image : styles.image}
+                        source={this.props.platform === 'ios' ? {uri: this.props.navigationState.images[this.state.activeImage]} : {uri: 'file://' + this.props.navigationState.images[this.state.activeImage]}}/>
+                    </ImageZoom>
 
                   </View>
                 }
@@ -153,8 +153,8 @@ class ValueInfo extends Component {
                 />
               </View>
             </View>
-        </Content>
-      </Container>
+          </Content>
+        </Container>
       </StyleProvider>
     );
   }

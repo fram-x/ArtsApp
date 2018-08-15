@@ -166,12 +166,12 @@ class Info extends Component {
     return (
       <Footer>
         <FooterTab>
-            <Button transparent onPress={this.onClickBack}>
-              <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.cancel}</Text>
-            </Button>
-            <Button transparent onPress={this.onClickDownload}>
-              <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.download}</Text>
-            </Button>
+          <Button transparent onPress={this.onClickBack}>
+            <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.cancel}</Text>
+          </Button>
+          <Button transparent onPress={this.onClickDownload}>
+            <Text style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text3 : styles.text3}>{this.props.strings.download}</Text>
+          </Button>
         </FooterTab>
       </Footer>
     );
@@ -180,22 +180,22 @@ class Info extends Component {
   render() {
     return (
       <StyleProvider style={this.props.deviceTypeAndroidTablet ? getTheme(androidTablet) : getTheme(common)}>
-      <Container>
-        <Header>
-          <Left>
-            <Button transparent  onPress={this.onClickBack}>
-              <Icon name='ios-arrow-back-outline' />
-            </Button>
-          </Left>
-          <Body style={{flex: 3}}>
-            <Title>{this.props.strings.keyInfo}</Title>
-          </Body>
-          <Right/>
-        </Header>
-        <Content>
-          <Grid>
-            <Col style={styles.container}>
-              {this.state.key.image === 1 &&
+        <Container>
+          <Header>
+            <Left>
+              <Button transparent  onPress={this.onClickBack}>
+                <Icon name='ios-arrow-back-outline' />
+              </Button>
+            </Left>
+            <Body style={{flex: 3}}>
+              <Title>{this.props.strings.keyInfo}</Title>
+            </Body>
+            <Right/>
+          </Header>
+          <Content>
+            <Grid>
+              <Col style={styles.container}>
+                {this.state.key.image === 1 &&
                 <ImageZoom
                   cropWidth={Dimensions.get('window').width - 20}
                   cropHeight={this.props.deviceTypeAndroidTablet ? 560 : 280}
@@ -204,33 +204,33 @@ class Info extends Component {
                   <Image style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.image : styles.image}
                     source={this.props.platform === 'ios' ? {uri: ImageConfig.getInfoImg(this.props.chosenKey)} : {uri: 'file://' + ImageConfig.getInfoImg(this.props.chosenKey)}}/>
                 </ImageZoom>
-              }
-              <Text  numberOfLines = {2} style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text : styles.text}>{this.state.key.title}</Text>
-              <View style={styles.separator} />
-              <View style = {styles.textBox}>
-                <HTMLView
-                  value = {this.removeHtmlBr()}
-                  stylesheet={this.props.deviceTypeAndroidTablet ? htmlstylesAndroidTablet : htmlstyles}
-                />
-              </View>
-            </Col>
-          </Grid>
-        </Content>
-        {this.props.showDownload ? this.showDownload() : null }
-        <Modal
-          offset={0}
-          animationDuration={200}
-          animationTension={40}
-          closeOnTouchOutside={false}
-          open={this.props.keyDownloaded_LOADING}
-          modalDidOpen={() => {}}
-          modalDidClose={this.modalClose}
-        >
-          <Text style={{fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15), textAlign: 'center',}}>{this.props.strings.downloading}</Text>
-          <Spinner color='green' />
-        </Modal>
-        <Toast ref="toast"/>
-      </Container>
+                }
+                <Text  numberOfLines = {2} style={this.props.deviceTypeAndroidTablet ? AndroidTabletStyles.text : styles.text}>{this.state.key.title}</Text>
+                <View style={styles.separator} />
+                <View style = {styles.textBox}>
+                  <HTMLView
+                    value = {this.removeHtmlBr()}
+                    stylesheet={this.props.deviceTypeAndroidTablet ? htmlstylesAndroidTablet : htmlstyles}
+                  />
+                </View>
+              </Col>
+            </Grid>
+          </Content>
+          {this.props.showDownload ? this.showDownload() : null }
+          <Modal
+            offset={0}
+            animationDuration={200}
+            animationTension={40}
+            closeOnTouchOutside={false}
+            open={this.props.keyDownloaded_LOADING}
+            modalDidOpen={() => {}}
+            modalDidClose={this.modalClose}
+          >
+            <Text style={{fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15), textAlign: 'center',}}>{this.props.strings.downloading}</Text>
+            <Spinner color='green' />
+          </Modal>
+          <Toast ref="toast"/>
+        </Container>
       </StyleProvider>
     );
   }

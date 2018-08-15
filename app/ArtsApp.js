@@ -49,76 +49,76 @@ const RouterWithRedux = connect()(Router);
  */
 const scenes = Actions.create(
   <Scene key="root" >
-      <Scene key="splash"
-        component={Splash}
-        title="Splash"
-        panHandlers={null}
-        hideNavBar
-        initial
-      />
-      <Scene
-        key="Frontpage"
-        component={Frontpage}
-        panHandlers={null}
-        title="Frontpage"
-        hideNavBar
-        type={ActionConst.RESET}
-      />
-      <Scene
-        key="Key"
-        panHandlers={null}
-        component={Key2}
-      />
-      <Scene
-        key="ValueInfo"
-        panHandlers={null}
-        component={ValueInfo}
-      />
-      <Scene
-        key="About"
-        panHandlers={null}
-        component={About}
-      />
-      <Scene
-        key="Info"
-        panHandlers={null}
-        component={Info}
-      />
-      <Scene
-        key="UpdateLocation"
-        panHandlers={null}
-        component={UpdateLocation}
-      />
-      <Scene
-        key="UpdateKeys"
-        panHandlers={null}
-        component={UpdateKeys}
-      />
-      <Scene
-        key="SpeciesLeft"
-        panHandlers={null}
-        component={SpeciesLeft}
-      />
-      <Scene
-        key="Species"
-        component={Species}
-        panHandlers={null}
-      />
-      <Scene
-        key="SpeciesImageViewer"
-        component={SpeciesImageViewer}
-        panHandlers={null}
-      />
-      <Scene
-        key="Observation"
-        component={Observation}
-        panHandlers={null}
-      />
-      <Scene
-        key="Debug"
-        component={Debug}
-        panHandlers={null}
-      />
+    <Scene key="splash"
+      component={Splash}
+      title="Splash"
+      panHandlers={null}
+      hideNavBar
+      initial
+    />
+    <Scene
+      key="Frontpage"
+      component={Frontpage}
+      panHandlers={null}
+      title="Frontpage"
+      hideNavBar
+      type={ActionConst.RESET}
+    />
+    <Scene
+      key="Key"
+      panHandlers={null}
+      component={Key2}
+    />
+    <Scene
+      key="ValueInfo"
+      panHandlers={null}
+      component={ValueInfo}
+    />
+    <Scene
+      key="About"
+      panHandlers={null}
+      component={About}
+    />
+    <Scene
+      key="Info"
+      panHandlers={null}
+      component={Info}
+    />
+    <Scene
+      key="UpdateLocation"
+      panHandlers={null}
+      component={UpdateLocation}
+    />
+    <Scene
+      key="UpdateKeys"
+      panHandlers={null}
+      component={UpdateKeys}
+    />
+    <Scene
+      key="SpeciesLeft"
+      panHandlers={null}
+      component={SpeciesLeft}
+    />
+    <Scene
+      key="Species"
+      component={Species}
+      panHandlers={null}
+    />
+    <Scene
+      key="SpeciesImageViewer"
+      component={SpeciesImageViewer}
+      panHandlers={null}
+    />
+    <Scene
+      key="Observation"
+      component={Observation}
+      panHandlers={null}
+    />
+    <Scene
+      key="Debug"
+      component={Debug}
+      panHandlers={null}
+    />
   </Scene>
 );
 
@@ -157,7 +157,7 @@ class ArtsApp extends Component {
   }
 
 
-/**
+  /**
  * Controll of the opening and clsing of the Menu
  * @return {void}
  */
@@ -187,28 +187,26 @@ class ArtsApp extends Component {
 
   render() {
     return (
-        <Drawer
-          ref={(ref) => {
-            this._drawer = ref;
-          }}
-          content={<MenuContent/>}
-          tapToClose
-          type="overlay"
-          onClose={() => this.closeDrawer()}
-          openDrawerOffset={0.35}
-          panCloseMask={0.35}
-          styles={{
-            drawer: {
-              marginTop: (Platform.OS === 'ios') ? 20 : 0,
-              marginBottom: 20,
-              shadowColor: '#000000',
-              shadowOpacity: 0.8,
-              shadowRadius: 3,
-            },
-          }}
-        >
+      <Drawer
+        ref={(ref) => {
+          this._drawer = ref;
+        }}
+        content={<MenuContent/>}
+        tapToClose
+        type="overlay"
+        onClose={() => this.closeDrawer()}
+        openDrawerOffset={0.35}
+        panCloseMask={0.35}
+        styles={{
+          drawer: {
+            shadowColor: '#AAA',
+            shadowOpacity: 0.8,
+            shadowRadius: 3,
+          },
+        }}
+      >
         <RouterWithRedux hideNavBar={true} scenes={scenes} />
-        </Drawer>
+      </Drawer>
     );
   }
 }

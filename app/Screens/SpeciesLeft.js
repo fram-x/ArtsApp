@@ -12,7 +12,7 @@ import {
   BackHandler,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import {List, ListItem} from 'native-base/backward';
+import {List, ListItem} from 'native-base';
 import { Button, Spinner,Icon, Container, StyleProvider, Header, Footer, FooterTab, Title, Content,Left, Body, Right,} from 'native-base';
 import SpeciesElement from '../components/SpeciesElement';
 import Modal from 'react-native-simple-modal';
@@ -220,32 +220,32 @@ class SpeciesLeft extends Component {
     case 'geo':
       return (
         <View style = {{padding: (this.props.deviceTypeAndroidTablet ? 10 : 5 ), backgroundColor: '#c9c9c9'}}>
-        <Text style = {{fontSize: (this.props.deviceTypeAndroidTablet ? 26 : 13 )}}>{this.props.strings.leftGeo}</Text>
-      </View>);
+          <Text style = {{fontSize: (this.props.deviceTypeAndroidTablet ? 26 : 13 )}}>{this.props.strings.leftGeo}</Text>
+        </View>);
       break;
     case 'left':
       if (this.props.nerbyList.length === 0) {
         return (
           <View style = {{padding: (this.props.deviceTypeAndroidTablet ? 4 : 2 ), marginTop: -1, backgroundColor: '#c9c9c9'}}>
-        </View>);
+          </View>);
       }
       return (
         <View style = {{padding: (this.props.deviceTypeAndroidTablet ? 10 : 5 ), marginTop: -1, backgroundColor: '#c9c9c9'}}>
-        <Text style = {{ fontSize: (this.props.deviceTypeAndroidTablet ? 26 : 13 )}}>{this.props.strings.leftNotGeo}</Text>
-      </View>);
+          <Text style = {{ fontSize: (this.props.deviceTypeAndroidTablet ? 26 : 13 )}}>{this.props.strings.leftNotGeo}</Text>
+        </View>);
       break;
     case 'elim':
       return (
         <View>
-        <Title style = {{ color: '#F8F8F8',backgroundColor: '#F0A00C', padding: (this.props.deviceTypeAndroidTablet ? 20 : 10) }}>{this.props.strings.eliminated}</Title>
-      </View>);
+          <Title style = {{ color: '#F8F8F8',backgroundColor: '#F0A00C', padding: (this.props.deviceTypeAndroidTablet ? 20 : 10) }}>{this.props.strings.eliminated}</Title>
+        </View>);
       break;
     default:
       return (
         <View>
-        <Title style = {{padding: (this.props.deviceTypeAndroidTablet ? 20 : 10) }}>{this.props.strings.eliminated}</Title>
-        <ListItem itemDivider style = {{ marginTop: -1 }}><Text style = {{fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15 )}}>{this.props.strings.eliminated}</Text></ListItem>
-      </View>);
+          <Title style = {{padding: (this.props.deviceTypeAndroidTablet ? 20 : 10) }}>{this.props.strings.eliminated}</Title>
+          <ListItem itemDivider style = {{ marginTop: -1 }}><Text style = {{fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15 )}}>{this.props.strings.eliminated}</Text></ListItem>
+        </View>);
     }
   }
 
@@ -269,7 +269,7 @@ class SpeciesLeft extends Component {
             obsLarge = {t.obsLarge}
             isAndroidTablet = {this.props.deviceTypeAndroidTablet}
             noObs = {this.props.nerbyList.length === 0 ? false : true}
-            />
+          />
         </ListItem>
       );
     }
@@ -306,44 +306,44 @@ class SpeciesLeft extends Component {
       <StyleProvider style={this.props.deviceTypeAndroidTablet ? getTheme(androidTablet) : getTheme(common)}>
         <Container>
           <Header>
-              <Left>
+            <Left>
               <Button transparent onPress={this.onClickMenu}>
-                  <Icon name='ios-menu' />
+                <Icon name='ios-menu' />
               </Button>
-              </Left>
-              <Body style={{flex: 3}}>
-                <Title>{this.props.chosenKeyTitle}</Title>
-              </Body>
-              <Right>
-                <Button transparent>
-                    <Icon name='ios-pin' onPress={this.geoOnPress}/>
-                </Button>
-              </Right>
-            </Header>
+            </Left>
+            <Body style={{flex: 3}}>
+              <Title>{this.props.chosenKeyTitle}</Title>
+            </Body>
+            <Right>
+              <Button transparent>
+                <Icon name='ios-pin' onPress={this.geoOnPress}/>
+              </Button>
+            </Right>
+          </Header>
           <Content >
             <Title style = {{ color: '#F8F8F8',backgroundColor: '#5FBB5A', padding: (this.props.deviceTypeAndroidTablet ? 20 : 10) }}>{this.props.strings.left}</Title>
-          {this.state.leftNotGeo.length === 0 && this.props.speciesLeft.length === 0 && <View style = {{ height: (this.props.deviceTypeAndroidTablet ? 100 : 50), backgroundColor: '#FFF'}}/>}
-          <SectionList
+            {this.state.leftNotGeo.length === 0 && this.props.speciesLeft.length === 0 && <View style = {{ height: (this.props.deviceTypeAndroidTablet ? 100 : 50), backgroundColor: '#FFF'}}/>}
+            <SectionList
               renderItem={this.renderItem}
               initialNumToRender = {11}
               keyExtractor={this.keyExtractor}
               renderSectionHeader={ this.renderSectionHeader}
               sections={this.getSections()}
             />
-          <View style = {{ height: (this.props.deviceTypeAndroidTablet ? 100 : 50), backgroundColor: '#FFF'}}/>
+            <View style = {{ height: (this.props.deviceTypeAndroidTablet ? 100 : 50), backgroundColor: '#FFF'}}/>
           </Content>
           <Footer>
             <FooterTab>
-                <Button transparent onPress={this.onClickHome}>
-                    <Icon name='md-home'/>
-                </Button>
-                <Button transparent onPress={this.onClickKey}>
-                    <Icon name='md-key'/>
-                </Button>
-                <Button transparent >
-                  <Text style={this.props.deviceTypeAndroidTablet && {fontSize: 30}}>{this.props.chosenValues.length === 0 ? this.props.fullSpList.length : this.props.speciesLeft.length }</Text>
-                  <Icon name='ios-bug'/>
-                </Button>
+              <Button transparent onPress={this.onClickHome}>
+                <Icon name='md-home'/>
+              </Button>
+              <Button transparent onPress={this.onClickKey}>
+                <Icon name='md-key'/>
+              </Button>
+              <Button transparent >
+                <Text style={this.props.deviceTypeAndroidTablet && {fontSize: 30}}>{this.props.chosenValues.length === 0 ? this.props.fullSpList.length : this.props.speciesLeft.length }</Text>
+                <Icon name='ios-bug'/>
+              </Button>
             </FooterTab>
           </Footer>
           <Toast ref="toast"/>
@@ -371,7 +371,7 @@ class SpeciesLeft extends Component {
             <Spinner color='green' />
           </Modal>
         </Container>
-        </StyleProvider>
+      </StyleProvider>
     );
   };
 }

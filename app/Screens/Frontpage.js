@@ -184,15 +184,15 @@ class Frontpage extends Component {
   renderItem = ({item}) => {
     if (item.keyStatus !== 'beta') {
       return  (<ListItem >
-          <KeyListElement
-            id ={item.key_id}
-            title ={item.title}
-            keyImage ={item.keyImage}
-            downloaded = {item.keyDownloaded}
-            onClick = {this.onClick}
-            level = {item.level}
-            keyAuthor = {item.author}
-          />
+        <KeyListElement
+          id ={item.key_id}
+          title ={item.title}
+          keyImage ={item.keyImage}
+          downloaded = {item.keyDownloaded}
+          onClick = {this.onClick}
+          level = {item.level}
+          keyAuthor = {item.author}
+        />
       </ListItem>);
     }
     return null;
@@ -201,15 +201,15 @@ class Frontpage extends Component {
   renderItemBeta = ({item}) => {
     if (item.keyStatus === 'beta') {
       return  (<ListItem >
-          <KeyListElement
-            id ={item.key_id}
-            title ={item.title}
-            keyImage ={item.keyImage}
-            downloaded = {item.keyDownloaded}
-            onClick = {this.onClick}
-            level = {item.level}
-            keyAuthor = {item.level}
-          />
+        <KeyListElement
+          id ={item.key_id}
+          title ={item.title}
+          keyImage ={item.keyImage}
+          downloaded = {item.keyDownloaded}
+          onClick = {this.onClick}
+          level = {item.level}
+          keyAuthor = {item.level}
+        />
       </ListItem>);
     }
     return null;
@@ -217,52 +217,53 @@ class Frontpage extends Component {
 
   render() {
     return (
-    <StyleProvider style={this.props.deviceTypeAndroidTablet ? getTheme(androidTablet) : getTheme(common)}>
-      <Container>
-        <Header>
-          <Left>
-          <Button transparent onPress={this.onClickMenu}>
-              <Icon name='ios-menu' />
-          </Button>
-          </Left>
-          <Body>
-            <Title>{this.props.strings.keys}</Title>
-          </Body>
-          <Right />
-        </Header>
-        <Content>
-          <FlatList
-            initialNumToRender = {9}
-            renderItem={this.renderItem}
-            keyExtractor={(item, index) => item.key_id}
-            data= {this.props.keys}
-          />
-        <ListItem style={{justifyContent: 'space-between'}} itemDivider key ={-99} onPress = {this.onClickBeta}>
-            <Text style={{fontSize: (this.props.deviceTypeAndroidTablet ? 40 : 20 ), fontWeight: 'bold',}}>{this.props.strings.betaKeys}</Text>
-            <Icon  name={this.state.collapsed ? 'ios-arrow-down' : 'ios-arrow-up'}/>
-          </ListItem>
-          {!this.state.collapsed && <FlatList
-            initialNumToRender = {9}
-            renderItem={this.renderItemBeta}
-            keyExtractor={(item, index) => item.key_id}
-            data= {this.props.keys}
-          />}
-        </Content>
-        <Modal
-          offset={0}
-          animationDuration={200}
-          animationTension={40}
-          closeOnTouchOutside={false}
-          open={this.state.loading}
-          modalDidOpen={() => {}}
-          modalStyle={{
-            backgroundColor: 'rgba(255, 255, 255, 0)',
-          }}
-        >
-          <Spinner color='green' />
-        </Modal>
-    </Container>
-  </StyleProvider>
+      <StyleProvider style={this.props.deviceTypeAndroidTablet ? getTheme(androidTablet) : getTheme(common)}>
+        <Container>
+          <Header>
+            <Left>
+              <Button transparent onPress={this.onClickMenu}>
+                <Icon name='ios-menu' />
+              </Button>
+            </Left>
+            <Body>
+              <Title>{this.props.strings.keys}</Title>
+            </Body>
+            <Right />
+          </Header>
+          <Content>
+            <FlatList
+              initialNumToRender = {9}
+              renderItem={this.renderItem}
+              keyExtractor={(item, index) => item.key_id}
+              data= {this.props.keys}
+              extradata= {this.props.keys}
+            />
+            <ListItem style={{justifyContent: 'space-between'}} itemDivider key ={-99} onPress = {this.onClickBeta}>
+              <Text style={{fontSize: (this.props.deviceTypeAndroidTablet ? 40 : 20 ), fontWeight: 'bold',}}>{this.props.strings.betaKeys}</Text>
+              <Icon  name={this.state.collapsed ? 'ios-arrow-down' : 'ios-arrow-up'}/>
+            </ListItem>
+            {!this.state.collapsed && <FlatList
+              initialNumToRender = {9}
+              renderItem={this.renderItemBeta}
+              keyExtractor={(item, index) => item.key_id}
+              data= {this.props.keys}
+            />}
+          </Content>
+          <Modal
+            offset={0}
+            animationDuration={200}
+            animationTension={40}
+            closeOnTouchOutside={false}
+            open={this.state.loading}
+            modalDidOpen={() => {}}
+            modalStyle={{
+              backgroundColor: 'rgba(255, 255, 255, 0)',
+            }}
+          >
+            <Spinner color='green' />
+          </Modal>
+        </Container>
+      </StyleProvider>
     );
   };
 }

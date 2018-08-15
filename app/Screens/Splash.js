@@ -66,7 +66,7 @@ class Splash extends Component {
     };
   };
 
-/**
+  /**
  * @return {Integer} random number between 1 - 10
  */
   getRandomInt() {
@@ -94,7 +94,7 @@ class Splash extends Component {
   startUp() {
     Actions.Frontpage();
   };
-/**
+  /**
  * Test if the app has been used before, if not, downloads the list of available keys.
  * Asks for network if not available.
  * @return {void} starts the app when ready
@@ -111,7 +111,7 @@ class Splash extends Component {
             this.props.strings.noNetWorkTitle,
             this.props.strings.firstNoNett + ' ',
             [
-            {text: this.props.strings.ok, onPress: () => this.startApp()},
+              {text: this.props.strings.ok, onPress: () => this.startApp()},
             ]
           );
         }
@@ -134,7 +134,7 @@ class Splash extends Component {
         {this.props.lastDownloaddate === -1 &&
           <View>
             <Spinner color='green' />
-          <Text numberOfLines = {2} ellipsizeMode = "tail" style={{textAlign: 'center', color: '#ffffff', fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15 )}}>{this.state.text}</Text>
+            <Text numberOfLines = {2} ellipsizeMode = "tail" style={{textAlign: 'center', color: '#ffffff', fontSize: (this.props.deviceTypeAndroidTablet ? 30 : 15 )}}>{this.state.text}</Text>
           </View>
         }
       </View>

@@ -24,9 +24,9 @@ function Setup():React.Component {
 
     render() {
       return (
-          <Provider store={this.state.store}>
-            <AppSetup/>
-          </Provider>
+        <Provider store={this.state.store}>
+          <AppSetup/>
+        </Provider>
 
       );
     }

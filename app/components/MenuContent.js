@@ -129,9 +129,9 @@ class MenuContent extends Component {
       this.props.strings.langChoise,
       this.props.strings.langText + ' ',
       [
-      {text: this.props.strings.en, onPress: () => this.onClick(7)},
-      {text: this.props.strings.no, onPress: () => this.onClick(8)},
-      {text: this.props.strings.cancel, onPress: () => this.onClick(9)},
+        {text: this.props.strings.en, onPress: () => this.onClick(7)},
+        {text: this.props.strings.no, onPress: () => this.onClick(8)},
+        {text: this.props.strings.cancel, onPress: () => this.onClick(9)},
       ],{ cancelable: false }
     );
   }
@@ -139,46 +139,46 @@ class MenuContent extends Component {
   renderList() {
     return (
       <List keyi = {this.props.debugMode} >
-      <ListItem button noBorder onPress={this.onClickObs}>
-        <Text style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.text : styles.text}>{this.props.strings.myObs}</Text>
-      </ListItem>
-      <ListItem button noBorder onPress={this.onClickLocation}>
-        <Text style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.text : styles.text}>{this.props.strings.updateLocation}</Text>
-      </ListItem>
-      <ListItem button noBorder onPress={this.onClickInfo}>
-        <Text style={(this.props.scene.name === 'Frontpage') ? (this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.textKeyInfo : styles.textKeyInfo) : (this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.text : styles.text)}>{this.props.strings.keyInfo}</Text>
-      </ListItem>
-      <ListItem  button noBorder onPress={this.onClickLang}>
-        <Text style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.text : styles.text}>{this.props.strings.language}</Text>
-      </ListItem>
-      <ListItem button noBorder onPress={this.onClickUpdateKeys}>
-        <Text style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.text : styles.text}>{this.props.strings.manageKeys}</Text>
-      </ListItem>
-    </List>
+        <ListItem button noBorder onPress={this.onClickObs}>
+          <Text style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.text : styles.text}>{this.props.strings.myObs}</Text>
+        </ListItem>
+        <ListItem button noBorder onPress={this.onClickLocation}>
+          <Text style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.text : styles.text}>{this.props.strings.updateLocation}</Text>
+        </ListItem>
+        <ListItem button noBorder onPress={this.onClickInfo}>
+          <Text style={(this.props.scene.name === 'Frontpage') ? (this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.textKeyInfo : styles.textKeyInfo) : (this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.text : styles.text)}>{this.props.strings.keyInfo}</Text>
+        </ListItem>
+        <ListItem  button noBorder onPress={this.onClickLang}>
+          <Text style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.text : styles.text}>{this.props.strings.language}</Text>
+        </ListItem>
+        <ListItem button noBorder onPress={this.onClickUpdateKeys}>
+          <Text style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.text : styles.text}>{this.props.strings.manageKeys}</Text>
+        </ListItem>
+      </List>
     );
   }
 
   render() {
     return (
       <StyleProvider style={this.props.deviceTypeAndroidTablet ? getTheme(androidTablet) : getTheme(common)}>
-      <Container>
-         <View
-           style={styles.menu}
-         >
-           <Image
-             square
-             style={styles.drawerCover}
-             source={drawerImage}
-           />
-           {this.renderList()}
-           <Button style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.about : styles.about} block transparent onPress={this.onClickAbout}>
-             <Image style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.logoImg : styles.logoImg} source={require('../images/AA_icon.png')} />
-             <Text style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.textAbout : styles.textAbout}>{this.props.strings.about}</Text>
-           </Button>
-         </View>
-         <Toast ref="toast"/>
-       </Container>
-     </StyleProvider>
+        <Container>
+          <View
+            style={styles.menu}
+          >
+            <Image
+              square
+              style={styles.drawerCover}
+              source={drawerImage}
+            />
+            {this.renderList()}
+            <Button style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.about : styles.about} block transparent onPress={this.onClickAbout}>
+              <Image style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.logoImg : styles.logoImg} source={require('../images/AA_icon.png')} />
+              <Text style={this.props.deviceTypeAndroidTablet ? stylesAndroidTablet.textAbout : styles.textAbout}>{this.props.strings.about}</Text>
+            </Button>
+          </View>
+          <Toast ref="toast"/>
+        </Container>
+      </StyleProvider>
     );
   }
 }

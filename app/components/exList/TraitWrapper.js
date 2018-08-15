@@ -138,15 +138,15 @@ class TraitWrapper extends Component {
     const childList = this.props.children;
     for (let j = 0; j < childList.length; j++) {
       wrapp.push(
-          <GroupChild
-            isSelected= {childList[j].value_id === this.state.selected}
-            selected = {this.state.selected !== -1}
-            disabled = {this.state.disable}
-            onClick={this.onChildClick}
-            key={childList[j].value_id}
-            id={childList[j].value_id}
-            valueInfo= {childList[j].valueInfo}
-            text={childList[j].valueText}/>
+        <GroupChild
+          isSelected= {childList[j].value_id === this.state.selected}
+          selected = {this.state.selected !== -1}
+          disabled = {this.state.disable}
+          onClick={this.onChildClick}
+          key={childList[j].value_id}
+          id={childList[j].value_id}
+          valueInfo= {childList[j].valueInfo}
+          text={childList[j].valueText}/>
       );
     }
     if (Platform.OS === 'ios') {
@@ -161,14 +161,14 @@ class TraitWrapper extends Component {
   render() {
     return (
       <View style= {styles.container}>
-      <Button iconRight block transparent full
-        disabled = {this.state.disable}
-        textStyle = {this.state.disable ? {color: '#a4a4a4'} : null}
-        key={this.props.traitID} id= {this.props.traitID} title= {this.props.traitTitle} onPress={this.toggle}>
-        <Text style = {{fontSize:(this.props.deviceTypeAndroidTablet ? 30 : 15)}}>{this.props.traitTitle}</Text>
-      {this.props.noView && <Icon style={{backgroundColor: 'rgba(255, 255, 255, 0)', fontSize: 20, color: 'red', margin: -10, justifyContent: 'flex-end'}} name='md-close-circle'/>}
-      </Button>
-      {!this.state.collapsed && this.renderWrapper()}
+        <Button iconRight block transparent full
+          disabled = {this.state.disable}
+          textStyle = {this.state.disable ? {color: '#a4a4a4'} : null}
+          key={this.props.traitID} id= {this.props.traitID} title= {this.props.traitTitle} onPress={this.toggle}>
+          <Text style = {{fontSize:(this.props.deviceTypeAndroidTablet ? 30 : 15)}}>{this.props.traitTitle}</Text>
+          {this.props.noView && <Icon style={{backgroundColor: 'rgba(255, 255, 255, 0)', fontSize: 20, color: 'red', margin: -10, justifyContent: 'flex-end'}} name='md-close-circle'/>}
+        </Button>
+        {!this.state.collapsed && this.renderWrapper()}
       </View>
     );
   }

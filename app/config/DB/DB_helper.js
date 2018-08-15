@@ -84,9 +84,9 @@ export default class DB_helper {
           this.updateDB({force: true}).then((value) => {
             this.updateLastUpdate().then(resolve());
           })
-          .catch((err) => {
-            resolve();
-          });
+            .catch((err) => {
+              resolve();
+            });
         }
         else {
           if (res.rows.raw()[0].version_id < database_version) {
@@ -103,12 +103,12 @@ export default class DB_helper {
         }
       }, (err) => {
         this.populateDB()
-        .then((value) => {
-          resolve();
-        })
-        .catch((err) => {
-          reject();
-        });
+          .then((value) => {
+            resolve();
+          })
+          .catch((err) => {
+            reject();
+          });
       });
     });
   };
@@ -130,10 +130,10 @@ export default class DB_helper {
             + 'FOREIGN KEY ( species_id ) REFERENCES Species ( species_id ), '
             + 'FOREIGN KEY ( trait_id ) REFERENCES Trait ( trait_id ), '
             + 'FOREIGN KEY ( key_id ) REFERENCES Key ( key_id ) ON DELETE CASCADE ) ; ', [], () =>{
-              resolve();
-            }, (e) => {
-              reject(e);
-            });
+          resolve();
+        }, (e) => {
+          reject(e);
+        });
       }
       else if (arg.old_version === 2 || arg.force) {
         resolve();
@@ -290,9 +290,9 @@ export default class DB_helper {
             + 'FOREIGN KEY ( key_id ) REFERENCES Key ( key_id ) ON DELETE CASCADE ) ; ', [], successCB, errorCB);
 
         this.db.executeSql('INSERT INTO Settings VALUES (' + database_version + ', CURRENT_TIMESTAMP );', [],
-            () => {
-            }, (e) => {
-            });
+          () => {
+          }, (e) => {
+          });
       }, (err) => {
         reject(err);
       }, (value) => {
@@ -318,12 +318,12 @@ export default class DB_helper {
     }
     return new Promise ((resolve, reject) => {
       this.db.executeSql('UPDATE Settings SET version_id = ?, lastUpdate =  CURRENT_TIMESTAMP  WHERE version_id = ?;', [database_version, v ],
-    () => {
-      resolve();
-    },
-    (e) => {
-      reject(e);
-    });
+        () => {
+          resolve();
+        },
+        (e) => {
+          reject(e);
+        });
     });
   }
 
@@ -391,38 +391,38 @@ export default class DB_helper {
     let promises = keys.map((key, index) => {
       return new Promise((res, rej) => {
         fetch(URLs.OCCURENCE_BASE + key.keyWeb + '?lon=' + longitude + '&lat=' + latitude)
-        .then((response) => response.json())
-        .then((responseJson) => {
-          this.deleteObservationNumbers(key.key_id)
-          .then( () =>{
-            this.db.transaction( () =>{
-              if (typeof responseJson.arter !== 'undefined') {
-                for (let i = 0; i < responseJson.arter.length; i++) {
-                  if (responseJson.arter[i].speciesId !== null) {
-                    this.insertnerbyObservation({
-                      species_id: responseJson.arter[i].speciesId,
-                      obsSmall: responseJson.arter[i].Counts.small,
-                      obsMedium: responseJson.arter[i].Counts.medium,
-                      obsLarge: responseJson.arter[i].Counts.large,
-                      obsCounty:  responseJson.arter[i].Counts.fylke,
-                      key_id: key.key_id
-                    });
+          .then((response) => response.json())
+          .then((responseJson) => {
+            this.deleteObservationNumbers(key.key_id)
+              .then( () =>{
+                this.db.transaction( () =>{
+                  if (typeof responseJson.arter !== 'undefined') {
+                    for (let i = 0; i < responseJson.arter.length; i++) {
+                      if (responseJson.arter[i].speciesId !== null) {
+                        this.insertnerbyObservation({
+                          species_id: responseJson.arter[i].speciesId,
+                          obsSmall: responseJson.arter[i].Counts.small,
+                          obsMedium: responseJson.arter[i].Counts.medium,
+                          obsLarge: responseJson.arter[i].Counts.large,
+                          obsCounty:  responseJson.arter[i].Counts.fylke,
+                          key_id: key.key_id
+                        });
+                      }
+                    }
                   }
-                }
-              }
-              else {
-                rej('err_null_sp');
-              }
-            }, (err) => {
-              rej(err);
-            }, (value) => {
-              res(value);
-            });
+                  else {
+                    rej('err_null_sp');
+                  }
+                }, (err) => {
+                  rej(err);
+                }, (value) => {
+                  res(value);
+                });
+              });
+          })
+          .catch((err) => {
+            rej(err);
           });
-        })
-        .catch((err) => {
-          rej(err);
-        });
       });
     });
     return Promise.all(promises);
@@ -444,10 +444,10 @@ export default class DB_helper {
         nerbyObservation.obsLarge,
         nerbyObservation.obsCounty,
         nerbyObservation.key_id ], () => {
-          resolve();
-        }, (e) => {
-          reject(e);
-        });
+        resolve();
+      }, (e) => {
+        reject(e);
+      });
     });
   }
 
@@ -640,10 +640,10 @@ export default class DB_helper {
       this.db.executeSql('INSERT INTO UserObservation ( latinName, localName, spOrder, family, species_id, latitude, longitude, place, county, key_id, obsDateTime) '
       + 'VALUES (?,?,?,?,?,?,?,?,?,?,? )', [observation.latinName, observation.localName, observation.order, observation.family, observation.species_id,
         observation.latitude, observation.longitude, observation.place, observation.county, observation.key_id, tempDateTime], () => {
-          resolve();
-        }, (e) => {
-          reject(e);
-        });
+        resolve();
+      }, (e) => {
+        reject(e);
+      });
     });
   }
 
@@ -766,20 +766,20 @@ export default class DB_helper {
         traits = traitRet.rows.raw();
         const promises = traits.map((trait, index) => {
           return Promise.all([this.getValueToTrait(keyId, trait.trait_id), this.getTraitElim(trait.trait_id), this.getSpeciesToTrait(trait.trait_id)])
-          .then( results => {
-            trait.values = results[0];
-            trait.eliminate = results[1];
-            trait.speciesToTrait = results[2];
-            return trait;
-          },
+            .then( results => {
+              trait.values = results[0];
+              trait.eliminate = results[1];
+              trait.speciesToTrait = results[2];
+              return trait;
+            },
             error => {
               reject();
             });
         });
         Promise.all(promises)
-        .then( listOfpromises => {
-          resolve(listOfpromises);
-        });
+          .then( listOfpromises => {
+            resolve(listOfpromises);
+          });
       },
       (e)=> {
         reject(e);
@@ -941,10 +941,10 @@ export default class DB_helper {
         + ' HAVING count(species_id) = '
         + values.length
         + ' ) ', [keyId], (result) => {
-          resolve(result.rows.raw());
-        }, (e) => {
-          reject(e);
-        }
+        resolve(result.rows.raw());
+      }, (e) => {
+        reject(e);
+      }
       );
     });
   }
