@@ -8,6 +8,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   rowWrapper: {
+    flexDirection: 'row',
     justifyContent: 'space-between',
   },
   footer: {

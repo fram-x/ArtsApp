@@ -13,7 +13,6 @@ import common from '../../native-base-theme/variables/commonColor';
 import androidTablet from '../../native-base-theme/variables/androidTablet';
 
 import KeyHeader from '../../components/KeyHeader';
-import TraitPanel from '../../components/TraitPanel';
 import TraitList from '../../components/TraitList';
 import SpeciesPanel from '../../components/SpeciesPanel';
 import TraitDialog from '../../components/TraitDialog';
@@ -121,7 +120,7 @@ class Key2 extends React.Component<Props, State> {
 
     return (
       <StyleProvider style={this.props.deviceTypeAndroidTablet ? getTheme(androidTablet) : getTheme(common)}>
-        <Container>
+        <View style={styles.container}>
           <KeyHeader
             title={title}
             closeTitle="Lukk"
@@ -129,20 +128,18 @@ class Key2 extends React.Component<Props, State> {
             onInfo={this.onKeyInfo}
           />
           <View style={styles.container} >
-            <TraitPanel
-                traits={usedTraits}
-                chosenValues={chosenValues}
-                onSelect={this.onTraitSelected}
-                valueImages={valueImages}
-                header='Valgte egenskaper:'
-                emptyHeader='Egenskaper ved arter'
-                emptyDescription='Du har ikke valgt noen egenskaper enda.'
-              />
             <TraitList
-              traits={unusedTraits}
+              unusedTraits={unusedTraits}
               activeTraits={activeTraits}
               activeValues={activeValues}
               onSelect={this.onTraitSelected}
+              traits={usedTraits}
+              chosenValues={chosenValues}
+              onSelect={this.onTraitSelected}
+              valueImages={valueImages}
+              header='Valgte egenskaper:'
+              emptyHeader='Egenskaper ved arter'
+              emptyDescription='Du har ikke valgt noen egenskaper enda.'
             />
             <SpeciesPanel
               species={species}
@@ -166,7 +163,7 @@ class Key2 extends React.Component<Props, State> {
               onInfo={this.onValueInfo}
             />
           </View>
-        </Container>
+        </View>
       </StyleProvider>
     );
 

@@ -2,16 +2,18 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    height: 150,
     justifyContent: 'center',
     borderBottomColor: '#CCC',
     borderBottomWidth: 1,
+    overflow: 'hidden'
   },
   emptyContainer:{
     alignItems: 'center',
+    padding: 16,
   },
   label: {
-
+    fontWeight: 'bold',
+    backgroundColor: 'transparent'
   },
   header: {
     fontWeight: 'bold',
@@ -20,7 +22,7 @@ export default StyleSheet.create({
     paddingTop: 8,
   },
   headerContainer: {
-    alignItems: 'center',
-    paddingTop: 12,
+    padding: 12,
+    paddingBottom: 10,
   },
 });
