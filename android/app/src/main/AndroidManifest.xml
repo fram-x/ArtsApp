@@ -13,8 +13,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove"/>
 
-    <uses-sdk android:targetSdkVersion="22" />
-
     <application
       android:name=".MainApplication"
       android:allowBackup="true"
